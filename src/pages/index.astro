@@ -1,17 +1,66 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
+import Intro from "../components/Intro.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <!-- <Intro /> -->
+  <div class="wrapper">
+    <h1 class="text-7xl font-bold text-center titre">
+      <span class="text-2xl font-normal inline-block my-20">Portofolio de</span>
+      <br />
+      <span id="title">Yannick Mehdi de Viguerie</span>
+      <br />
+      <br /> Développeur
+    </h1>
+  </div>
+</Layout>
+<script>
+  const title: HTMLElement | null = document.getElementById("title");
+
+  if (!title) {
+    throw new Error("Title element not found");
+  }
+
+  const text = title.textContent;
+
+  const fonts = [
+    "'Bitcount Single', monospace",
+    "'Black Ops One', cursive",
+    "'Dancing Script', cursive",
+    "'Quicksand', sans-serif",
+    "'Baskervville', serif",
+    "'Montserrat', sans-serif",
+    "'Playfair Display', serif",
+  ];
+
+  title.innerHTML = text
+    .split("")
+    .map((letter) =>
+      letter === " " ? " " : `<span class="letter">${letter}</span>`,
+    )
+    .join("");
+
+  const letters = document.querySelectorAll(".letter");
+
+  letters.forEach((letter, index) => {
+    let count = 0;
+
+    const interval = setInterval(
+      () => {
+        (letter as HTMLElement).style.fontFamily =
+          fonts[Math.floor(Math.random() * fonts.length)];
+
+        count++;
+
+        if (count > 10 + Math.random() * 10) {
+          clearInterval(interval);
+
+          (letter as HTMLElement).style.fontFamily =
+            "'Playfair Display', serif";
+        }
+      },
+      80 + Math.random() * 120,
+    );
+  });
+</script>

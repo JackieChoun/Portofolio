@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@import url("https://fonts.googleapis.com/css2?family=Baskervville:wght@400..700&family=Bitcount+Single:wght@100..900&family=Black+Ops+One&family=Dancing+Script:wght@400..700&family=Montserrat:wght@100..900&family=Playfair+Display:wght@400..900&family=Quicksand:wght@300..700&display=swap");
+
+body {
+  @apply overflow-x-hidden;
+  font-family: "Montserrat", sans-serif;
+}
+
+.titre {
+  font-family: "Playfair Display", serif;
+}
+
+html {
+  @apply scroll-smooth;
+}
+
+.wrapper {
+  @apply px-4 lg:px-8 w-full;
+  max-width: 100%;
+}

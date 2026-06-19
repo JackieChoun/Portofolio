@@ -1,0 +1,86 @@
+<div
+  id="terminal"
+  class="bg-zinc-950 text-green-400 p-4 lg:p-8 fixed inset-0 z-100 font-mono"
+>
+  <pre id="output"></pre>
+  <span id="cursor">█</span>
+  <div id="lapin" class="hidden">
+    <p>
+      Tu as tué le lapin blanc, tu es un monstre ! Appuie sur [ Entrée ] pour le
+      faire revenir à la vie...
+    </p>
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+      <img
+        src="lapin.jpg"
+        alt="Lapin blanc"
+        class="w-35 h-35 mt-10 animate-bounce mx-auto rounded-full"
+      />
+    </a>
+  </div>
+</div>
+<style>
+  #cursor {
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  #terminal {
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s ease;
+  }
+
+  .fade-out {
+    opacity: 0;
+    transform: scale(1.01);
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  const message = `> Initialisation...
+> Chargement du portfolio...
+> Bonjour, je suis Mehdi, développeur web.
+> Bienvenue sur mon site !
+> Appuyez sur [ Entrée ] ou cliquez pour en savoir plus...`;
+
+  const output = document.getElementById("output");
+
+  let i = 0;
+
+  function type() {
+    if (output && i < message.length) {
+      output.textContent += message[i];
+      i++;
+
+      setTimeout(type, 30);
+    }
+  }
+
+  type();
+  const terminal = document.getElementById("terminal");
+  const lapin = document.getElementById("lapin");
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      terminal?.classList.add("fade-out");
+    }
+  });
+  document.addEventListener("click", (event) => {
+    if (i >= message.length) {
+      terminal?.classList.add("fade-out");
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      output?.classList.add("hidden");
+      lapin?.classList.remove("hidden");
+    }
+  });
+</script>

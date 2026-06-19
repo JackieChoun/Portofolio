@@ -1,0 +1,99 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<nav
+  id="sidebar"
+  class="fixed left-0 top-0 z-50 h-screen w-72 bg-[#252526] border-r border-zinc-700 p-4 transition-transform duration-300"
+>
+  <div
+    class="flex items-center justify-between mb-4 border-b border-zinc-700 pb-2"
+  >
+    <h2 class="text-2xl text-zinc-200 font-bold tracking-wider">Navigation</h2>
+    <button
+      id="toggle-sidebar"
+      class="text-zinc-400 hover:text-white cursor-pointer"
+      aria-label="Fermer la navigation"
+    >
+      <Icon name="lucide:panel-left-close" class="w-5 h-5" />
+    </button>
+  </div>
+
+  <div class="mt-8 font-mono text-sm text-zinc-200 select-none">
+    <ul class="space-y-1">
+      <li>portfolio/</li>
+
+      <li class="pl-4">
+        ├── <a href="/" class="hover:text-blue-400">home</a>
+      </li>
+
+      <li class="pl-4">├── parcours/</li>
+
+      <li class="pl-8">
+        │ ├── <a href="/parcours#presentation" class="hover:text-blue-400"
+          >presentation.md</a
+        >
+      </li>
+
+      <li class="pl-8">
+        │ ├── <a href="/parcours#experiences" class="hover:text-blue-400"
+          >experiences.md</a
+        >
+      </li>
+
+      <li class="pl-8">
+        │ ├── <a href="/parcours#formation" class="hover:text-blue-400"
+          >formation.md</a
+        >
+      </li>
+
+      <li class="pl-8">
+        │ └── <a href="/cv.pdf" class="hover:text-blue-400">cv.pdf</a>
+      </li>
+
+      <li class="pl-4">├── projets/</li>
+
+      <li class="pl-8">
+        │ ├── <a href="/projets/marika" class="hover:text-blue-400"
+          >marika.astro</a
+        >
+      </li>
+
+      <li class="pl-8">
+        │ └── <a href="/projets/montres-cinema" class="hover:text-blue-400"
+          >montres-cinema.astro</a
+        >
+      </li>
+
+      <li class="pl-4">
+        ├── <a href="/xyz-dev" class="hover:text-blue-400">xyz.dev</a>
+      </li>
+
+      <li class="pl-4">
+        └── <a href="/contact" class="hover:text-blue-400">contact.ts</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<button
+  id="open-sidebar"
+  class="border border-zinc-700 px-4 py-2 rounded text-zinc-200 cursor-pointer flex items-center"
+>
+  <Icon name="lucide:panel-left" class="w-5 h-5 mr-2" /> Navigation
+</button>
+
+<script>
+  const sidebar = document.getElementById("sidebar");
+  const closeBtn = document.getElementById("toggle-sidebar");
+  const openBtn = document.getElementById("open-sidebar");
+
+  closeBtn?.addEventListener("click", () => {
+    sidebar?.classList.add("-translate-x-full");
+    openBtn?.classList.remove("hidden");
+  });
+
+  openBtn?.addEventListener("click", () => {
+    sidebar?.classList.remove("-translate-x-full");
+  });
+</script>
