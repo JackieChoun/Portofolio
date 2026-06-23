@@ -6,15 +6,36 @@ import Intro from "../components/Intro.astro";
 <Layout>
   <!-- <Intro /> -->
   <div class="wrapper">
-    <h1 class="text-7xl font-bold text-center titre">
-      <span class="text-2xl font-normal inline-block my-20">Portofolio de</span>
+    <h1 class="text-7xl font-bold text-center">
+      <span class="text-2xl font-normal inline-block my-15">Portofolio de</span>
       <br />
       <span id="title">Yannick Mehdi de Viguerie</span>
       <br />
-      <br /> Développeur
     </h1>
+    <img
+      src="/moi2.jpg"
+      alt="Photo de profil de Yannick Mehdi de Viguerie"
+      title="Moi mi-saison"
+      class="rounded-full w-40 h-40 mx-auto my-10"
+      id="pixelated"
+    />
+    <h2 class="text-5xl font-bold text-center subtitle">
+      Développeur fullstack
+    </h2>
   </div>
 </Layout>
+<style>
+  #pixelated {
+    clip-path: inset(0 0 100% 0);
+    animation: reveal 4s forwards;
+  }
+
+  @keyframes reveal {
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+</style>
 <script>
   const title: HTMLElement | null = document.getElementById("title");
 

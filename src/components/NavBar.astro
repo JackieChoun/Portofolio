@@ -4,7 +4,7 @@ import { Icon } from "astro-icon/components";
 
 <nav
   id="sidebar"
-  class="fixed left-0 top-0 z-50 h-screen w-72 bg-[#252526] border-r border-zinc-700 p-4 transition-transform duration-300"
+  class="fixed left-0 top-0 z-50 h-screen w-72 bg-[#252526] border-r border-zinc-700 p-4 transition-transform duration-300 hidden"
 >
   <div
     class="flex items-center justify-between mb-4 border-b border-zinc-700 pb-2"
@@ -54,14 +54,14 @@ import { Icon } from "astro-icon/components";
       <li class="pl-4">├── projets/</li>
 
       <li class="pl-8">
-        │ ├── <a href="/projets/marika" class="hover:text-blue-400"
-          >marika.astro</a
+        │ ├── <a href="/projets/philosophiques" class="hover:text-blue-400"
+          >Consultationsphilo</a
         >
       </li>
 
       <li class="pl-8">
-        │ └── <a href="/projets/montres-cinema" class="hover:text-blue-400"
-          >montres-cinema.astro</a
+        │ └── <a href="/projets/marika" class="hover:text-blue-400"
+          >MarikaPerros</a
         >
       </li>
 
@@ -94,6 +94,6 @@ import { Icon } from "astro-icon/components";
   });
 
   openBtn?.addEventListener("click", () => {
-    sidebar?.classList.remove("-translate-x-full");
+    sidebar?.classList.remove("-translate-x-full", "hidden");
   });
 </script>
