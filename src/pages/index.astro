@@ -1,11 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Intro from "../components/Intro.astro";
+import { Icon } from "astro-icon/components";
+import ProjectCard from "../components/ProjectCard.astro";
 ---
 
 <Layout>
   <!-- <Intro /> -->
-  <div class="wrapper">
+  <section class="wrapper" id="home">
     <h1 class="text-7xl font-bold text-center">
       <span class="text-2xl font-normal inline-block my-15">Portofolio de</span>
       <br />
@@ -22,66 +24,430 @@ import Intro from "../components/Intro.astro";
     <h2 class="text-5xl font-bold text-center subtitle">
       Développeur fullstack
     </h2>
-  </div>
-</Layout>
-<style>
-  #pixelated {
-    clip-path: inset(0 0 100% 0);
-    animation: reveal 4s forwards;
-  }
+    <p class="text-sm text-center mt-5 mx-50">
+      Bienvenue sur mon portfolio ! Pour me présenter: je suis calme, patient et
+      sociable, j'apprécie apprendre et particulièrement analyser un problème,
+      chercher des solutions et construire quelque chose de concret. Après une
+      première carrière dans le commerce et la gestion d'équipe, j'ai décidé de
+      me reconvertir vers le développement d'applications et de sites web
+      modernes. Le code reunie ce que j'affectionne et mon caractère naturel
+      m'aide à trouver des solutions; il faut savoir rester calme devant son
+      ecran, patient face aux erreurs et sociable avec ce pauvre ordinateur qui
+      fait ce qu'il peut pour nous comprendre.<br /> Au plaisir d'echanger avec vous
+      et bonne navigation.
+    </p>
+  </section>
+  <section id="parcours" class="wrapper py-24">
+    <h2 class="text-4xl mb-12 text-center">Parcours</h2>
 
-  @keyframes reveal {
-    to {
-      clip-path: inset(0 0 0 0);
-    }
-  }
-</style>
-<script>
-  const title: HTMLElement | null = document.getElementById("title");
+    <div id="experiences" class="mb-16">
+      <h3 class="text-2xl mb-6">Expériences</h3>
 
-  if (!title) {
-    throw new Error("Title element not found");
-  }
+      <div class="space-y-10">
+        <article>
+          <div
+            class="flex flex-col md:flex-row md:justify-between md:items-center mb-2"
+          >
+            <h4 class="text-xl font-semibold">Développeur Web • JBC</h4>
 
-  const text = title.textContent;
+            <span class="text-zinc-400"> 2025 • Stage de 8 semaines </span>
+          </div>
 
-  const fonts = [
-    "'Bitcount Single', monospace",
-    "'Black Ops One', cursive",
-    "'Dancing Script', cursive",
-    "'Quicksand', sans-serif",
-    "'Baskervville', serif",
-    "'Montserrat', sans-serif",
-    "'Playfair Display', serif",
-  ];
+          <div class="flex flex-wrap gap-4 my-4 text-sm">
+            <div class="flex items-center gap-2">
+              <Icon name="logos:php" class="w-5 h-5" />
+              <span>PHP</span>
+            </div>
 
-  title.innerHTML = text
-    .split("")
-    .map((letter) =>
-      letter === " " ? " " : `<span class="letter">${letter}</span>`,
-    )
-    .join("");
+            <div class="flex items-center gap-2">
+              <Icon name="logos:laravel" class="w-5 h-5" />
+              <span>Laravel</span>
+            </div>
 
-  const letters = document.querySelectorAll(".letter");
+            <div class="flex items-center gap-2">
+              <Icon name="logos:mysql" class="w-5 h-5" />
+              <span>MySQL</span>
+            </div>
 
-  letters.forEach((letter, index) => {
-    let count = 0;
+            <div class="flex items-center gap-2">
+              <Icon name="logos:vue" class="w-5 h-5" />
+              <span>Vue.js</span>
+            </div>
 
-    const interval = setInterval(
-      () => {
-        (letter as HTMLElement).style.fontFamily =
-          fonts[Math.floor(Math.random() * fonts.length)];
+            <div class="flex items-center gap-2">
+              <Icon name="logos:tailwindcss-icon" class="w-5 h-5" />
+              <span>Tailwind</span>
+            </div>
 
-        count++;
+            <div class="flex items-center gap-2">
+              <Icon name="logos:git-icon" class="w-5 h-5" />
+              <span>Git</span>
+            </div>
 
-        if (count > 10 + Math.random() * 10) {
-          clearInterval(interval);
+            <div class="flex items-center gap-2">
+              <Icon name="logos:figma" class="w-5 h-5" />
+              <span>Figma</span>
+            </div>
+          </div>
 
-          (letter as HTMLElement).style.fontFamily =
-            "'Playfair Display', serif";
+          <p>
+            Stage de fin de formation réalisé avec un auto-entrepreneur dans le
+            développement de sites web sur mesure.
+          </p>
+          <details class="mt-4">
+            <summary
+              class="px-4 py-3 w-fit cursor-pointer bg-[#252526] border border-zinc-700 rounded hover:bg-[#2a2a2a] transition"
+            >
+              Missions réalisées
+            </summary>
+            <ul class="list-disc ml-6 mt-3 space-y-1 text-zinc-300">
+              <li>Développement d'applications web avec Laravel et PHP.</li>
+              <li>Création et optimisation de bases de données MySQL.</li>
+              <li>
+                Développement d'interfaces utilisateurs avec Vue.js et Tailwind
+                CSS.
+              </li>
+              <li>Intégration de maquettes réalisées sous Figma.</li>
+              <li>
+                Mise en place de fonctionnalités back-office et espaces
+                administrateurs.
+              </li>
+              <li>Gestion de l'authentification et des droits utilisateurs.</li>
+              <li>Participation à la conception de l'architecture MVC.</li>
+              <li>Utilisation de Git pour le versionnement du code.</li>
+              <li>
+                Corrections de bugs, tests et amélioration de l'expérience
+                utilisateur.
+              </li>
+            </ul>
+          </details>
+        </article>
+        <article>
+          <div
+            class="flex flex-col md:flex-row md:justify-between md:items-center mb-2"
+          >
+            <h4 class="text-xl font-semibold">
+              Responsable de magasin • Carrefour City
+            </h4>
+
+            <span class="text-zinc-400"> 2014 - 2019 </span>
+          </div>
+
+          <p>
+            Responsable de l'exploitation quotidienne du magasin avec gestion de
+            l'activité commerciale et opérationnelle.
+          </p>
+          <details class="mt-4">
+            <summary
+              class="px-4 py-3 w-fit cursor-pointer bg-[#252526] border border-zinc-700 rounded hover:bg-[#2a2a2a] transition"
+            >
+              Missions réalisées
+            </summary>
+            <ul class="list-disc ml-6 mt-3 space-y-1 text-zinc-300">
+              <li>Management, accompagnement et formation des équipes.</li>
+              <li>Organisation des plannings et répartition des tâches.</li>
+              <li>
+                Gestion des commandes, des stocks et des approvisionnements.
+              </li>
+              <li>
+                Suivi des indicateurs commerciaux et des objectifs de chiffre
+                d'affaires.
+              </li>
+              <li>Relation fournisseurs et contrôle des livraisons.</li>
+              <li>
+                Gestion des inventaires et optimisation des niveaux de stock.
+              </li>
+              <li>
+                Garant du respect des procédures d'hygiène et de sécurité.
+              </li>
+              <li>Gestion de la relation client et résolution des litiges.</li>
+            </ul>
+          </details>
+        </article>
+        <article>
+          <div
+            class="flex flex-col md:flex-row md:justify-between md:items-center mb-2"
+          >
+            <h4 class="text-xl font-semibold">Employé commercial • Super U</h4>
+
+            <span class="text-zinc-400"> 2020 - 2025 </span>
+          </div>
+
+          <p>
+            Gestion du rayon fruits et légumes avec suivi quotidien de
+            l'approvisionnement, des commandes et de la qualité des produits.
+          </p>
+          <details class="mt-4">
+            <summary
+              class="px-4 py-3 w-fit cursor-pointer bg-[#252526] border border-zinc-700 rounded hover:bg-[#2a2a2a] transition"
+            >
+              Missions réalisées
+            </summary>
+            <ul class="list-disc ml-6 mt-3 space-y-1 text-zinc-300">
+              <li>Mise en rayon et merchandising.</li>
+              <li>Gestion des commandes et des réceptions.</li>
+              <li>Contrôle de la qualité et de la fraîcheur des produits.</li>
+              <li>Suivi des stocks et limitation de la démarque.</li>
+              <li>Conseil et accueil de la clientèle.</li>
+            </ul>
+          </details>
+        </article>
+      </div>
+
+      <div id="formation" class="mt-16">
+        <h3 class="text-2xl mb-6">Formations & Diplômes</h3>
+
+        <div class="space-y-8">
+          <article>
+            <h4 class="text-xl font-semibold">
+              Concepteur Développeur d'Applications (CDA)
+            </h4>
+
+            <p class="text-zinc-400 mb-2">
+              Admission 2026 • Niveau 6 (Bac +3/4)
+            </p>
+
+            <p>
+              Admission obtenue pour poursuivre mon parcours vers le
+              développement logiciel et approfondir mes compétences en
+              conception d'applications, architecture logicielle et gestion de
+              projets.
+            </p>
+          </article>
+
+          <article>
+            <h4 class="text-xl font-semibold">
+              Développeur Web et Web Mobile (DWWM)
+            </h4>
+
+            <p class="text-zinc-400 mb-2">
+              2024 - 2025 • ADRAR Formation • Titre professionnel RNCP Niveau 5
+              (Bac +2)
+            </p>
+
+            <p>
+              Formation orientée développement web full stack avec réalisation
+              de projets concrets et immersion en entreprise.
+            </p>
+
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="bg-zinc-800 px-3 py-1 rounded">HTML</span>
+              <span class="bg-zinc-800 px-3 py-1 rounded">CSS</span>
+              <span class="bg-zinc-800 px-3 py-1 rounded">JavaScript</span>
+              <span class="bg-zinc-800 px-3 py-1 rounded">PHP</span>
+              <span class="bg-zinc-800 px-3 py-1 rounded">MySQL</span>
+              <span class="bg-zinc-800 px-3 py-1 rounded">UX/UI</span>
+              <span class="bg-zinc-800 px-3 py-1 rounded">Git</span>
+              <span class="bg-zinc-800 px-3 py-1 rounded">Méthode Agile</span>
+              <span class="bg-zinc-800 px-3 py-1 rounded">SEO</span>
+            </div>
+          </article>
+
+          <article>
+            <h4 class="text-xl font-semibold">
+              Certification ANSSI - SecNumacadémie
+            </h4>
+
+            <p class="text-zinc-400 mb-2">
+              2025 • Sensibilisation à la cybersécurité
+            </p>
+
+            <p>
+              Bonnes pratiques de sécurité informatique, protection des données,
+              authentification et gestion des risques numériques.
+            </p>
+          </article>
+
+          <article>
+            <h4 class="text-xl font-semibold">
+              Baccalauréat Professionnel Plasturgie
+            </h4>
+
+            <p class="text-zinc-400 mb-2">Lycée Roland Garros</p>
+          </article>
+
+          <article>
+            <h4 class="text-xl font-semibold">BEP Plasturgie</h4>
+
+            <p class="text-zinc-400 mb-2">Lycée Roland Garros</p>
+          </article>
+
+          <div class="mt-12">
+            <h3 class="text-2xl mb-4">Informations complémentaires</h3>
+
+            <ul class="space-y-2 text-zinc-300">
+              <li>✓ Permis B</li>
+              <li>✓ Véhiculé</li>
+              <li>✓ Permis côtier</li>
+              <li>✓ Brevet de pilote de planeur</li>
+            </ul>
+          </div>
+        </div>
+        <div class="text-center">
+          <a
+            href="/CV_DevYannickdeViguerie.pdf"
+            download
+            class="inline-block mt-8 px-4 py-2 border border-zinc-600 rounded hover:bg-zinc-800 transition text-xl"
+            title="Ne clique pas! Sauf si tu veux télécharger mon CV evidemment"
+          >
+            Télécharger mon Curriculum Vitae
+          </a>
+        </div>
+      </div>
+    </div>
+    <section id="projet" class="wrapper">
+      <h2 class="text-4xl mb-12 text-center">Projets</h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <ProjectCard
+          title="Marika Perros"
+          image="/CaptureMarikaSite.webp"
+          url="https://marikaperros.com"
+          technologies={[
+            { name: "Laravel", icon: "logos:laravel" },
+            { name: "Vue.js", icon: "logos:vue" },
+            { name: "Tailwind", icon: "logos:tailwindcss-icon" },
+            { name: "MySQL", icon: "logos:mysql" },
+            { name: "Git", icon: "logos:git-icon" },
+          ]}
+          description="Site d'artiste avec administration back-office, gestion de contenu et optimisation SEO."
+        />
+
+        <ProjectCard
+          title="Consultations Philosophiques"
+          image="/CaptureConsultSite.webp"
+          url="https://consultationsphilosophiques.fr"
+          technologies={[
+            { name: "Astro", icon: "logos:astro" },
+            { name: "Tailwind CSS", icon: "logos:tailwindcss-icon" },
+            { name: "JavaScript", icon: "logos:javascript" },
+            { name: "Git", icon: "logos:git-icon" },
+          ]}
+          description="Site vitrine responsive conçu pour présenter une activité de consultation philosophique thérapeutique."
+        />
+      </div>
+    </section>
+    <section id="contact" class="wrapper py-24">
+      <h2 class="text-4xl mb-12 text-center">Contact</h2>
+
+      <div
+        class="max-w-3xl mx-auto border border-zinc-700 rounded-xl p-8 bg-zinc-900/50"
+      >
+        <p class="text-lg text-zinc-300 mb-8 text-center">
+          Une question, un projet, une opportunité professionnelle ou simplement
+          l'envie d'échanger autour du développement web ?
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <a
+            href="mailto:Yannickdeviguerie@gmail.com"
+            class="border border-zinc-700 rounded-lg p-4 hover:border-blue-500 transition"
+          >
+            <h3 class="font-semibold mb-2 flex items-center gap-2">
+              Email <Icon name="lucide:mail" />
+            </h3>
+            <p class="text-zinc-400">Yannickdeviguerie@gmail.com</p>
+          </a>
+
+          <a
+            href="tel:+33762617190"
+            class="border border-zinc-700 rounded-lg p-4 hover:border-blue-500 transition"
+          >
+            <h3 class="font-semibold mb-2 flex items-center gap-2">
+              Téléphone <Icon name="lucide:phone" />
+            </h3>
+            <p class="text-zinc-400">07 62 61 71 90</p>
+          </a>
+
+          <a
+            href="https://github.com/JackieChoun"
+            target="_blank"
+            class="border border-zinc-700 rounded-lg p-4 hover:border-blue-500 transition"
+          >
+            <h3 class="font-semibold mb-2 flex items-center gap-2">
+              GitHub <Icon name="lucide:github" />
+            </h3>
+            <p class="text-zinc-400">Voir mes projets</p>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/yannick-de-viguerie/"
+            target="_blank"
+            class="border border-zinc-700 rounded-lg p-4 hover:border-blue-500 transition"
+          >
+            <h3 class="font-semibold mb-2 flex items-center gap-2">
+              LinkedIn <Icon name="lucide:linkedin" />
+            </h3>
+            <p class="text-zinc-400">Mon profil professionnel</p>
+          </a>
+        </div>
+
+        <div class="mt-10 text-center text-zinc-400">
+          Basé à Toulouse • Disponible pour un poste de développeur web ou des
+          projets freelance.
+        </div>
+      </div>
+    </section>
+    <style>
+      #pixelated {
+        clip-path: inset(0 0 100% 0);
+        animation: reveal 4s forwards;
+      }
+
+      @keyframes reveal {
+        to {
+          clip-path: inset(0 0 0 0);
         }
-      },
-      80 + Math.random() * 120,
-    );
-  });
-</script>
+      }
+    </style>
+    <script>
+      const title: HTMLElement | null = document.getElementById("title");
+
+      if (!title) {
+        throw new Error("Title element not found");
+      }
+
+      const text = title.textContent;
+
+      const fonts = [
+        "'Bitcount Single', monospace",
+        "'Black Ops One', cursive",
+        "'Dancing Script', cursive",
+        "'Quicksand', sans-serif",
+        "'Baskervville', serif",
+        "'Montserrat', sans-serif",
+        "'Playfair Display', serif",
+      ];
+
+      title.innerHTML = text
+        .split("")
+        .map((letter) =>
+          letter === " " ? " " : `<span class="letter">${letter}</span>`,
+        )
+        .join("");
+
+      const letters = document.querySelectorAll(".letter");
+
+      letters.forEach((letter, index) => {
+        let count = 0;
+
+        const interval = setInterval(
+          () => {
+            (letter as HTMLElement).style.fontFamily =
+              fonts[Math.floor(Math.random() * fonts.length)];
+
+            count++;
+
+            if (count > 10 + Math.random() * 10) {
+              clearInterval(interval);
+
+              (letter as HTMLElement).style.fontFamily =
+                "'Playfair Display', serif";
+            }
+          },
+          80 + Math.random() * 120,
+        );
+      });
+    </script>
+  </section>
+</Layout>
