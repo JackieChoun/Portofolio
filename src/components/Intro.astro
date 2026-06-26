@@ -1,23 +1,14 @@
 <div
   id="terminal"
-  class="bg-zinc-950 text-green-400 p-4 lg:p-8 fixed inset-0 z-100 font-mono"
+  class="bg-zinc-950 text-green-400 p-4 lg:p-8 fixed inset-0 z-100 font-mono select-none hidden"
 >
   <pre id="output"></pre>
   <span id="cursor">█</span>
-  <div id="lapin" class="hidden">
-    <p>
-      Tu as tué le lapin blanc, tu es un monstre ! Appuie sur [ Entrée ] pour le
-      faire revenir à la vie...
-    </p>
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
-      <img
-        src="lapin.jpg"
-        alt="Lapin blanc"
-        class="w-35 h-35 mt-10 animate-bounce mx-auto rounded-full"
-      />
-    </a>
-  </div>
+  <!-- <div class="flex justify-center items-center text-9xl">
+    Yannick Mehdi de Viguerie
+  </div> -->
 </div>
+
 <style>
   #cursor {
     animation: blink 1s infinite;
@@ -44,43 +35,51 @@
 
 <script>
   const message = `> Initialisation...
-> Chargement du portfolio...
-> Bonjour, je suis Mehdi, développeur web.
-> Bienvenue sur mon site !
-> Appuyez sur [ Entrée ] ou cliquez pour en savoir plus...`;
+> Chargement du portfolio...`;
 
   const output = document.getElementById("output");
+  const terminal = document.getElementById("terminal");
 
   let i = 0;
 
+  // Check if the intro has already been seen
+  const seen = localStorage.getItem("introSeen");
+  const INTRO_DURATION = 1000 * 60 * 60 * 24 * 7;
+
+  if (seen && Date.now() - Number(seen) < INTRO_DURATION) {
+    terminal?.remove();
+    window.dispatchEvent(new Event("introFinished"));
+  } else {
+    terminal?.classList.remove("hidden");
+    type();
+  }
+
+  function closeIntro() {
+    terminal?.classList.add("fade-out");
+
+    terminal?.addEventListener(
+      "transitionend",
+      () => {
+        localStorage.setItem("introSeen", Date.now().toString());
+
+        terminal?.remove();
+        window.dispatchEvent(new Event("introFinished"));
+      },
+      { once: true },
+    );
+  }
+
+  // Type the message
   function type() {
-    if (output && i < message.length) {
+    if (!output) return;
+
+    if (i < message.length) {
       output.textContent += message[i];
       i++;
 
       setTimeout(type, 30);
+    } else {
+      setTimeout(closeIntro, 500);
     }
   }
-
-  type();
-  const terminal = document.getElementById("terminal");
-  const lapin = document.getElementById("lapin");
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      terminal?.classList.add("fade-out");
-    }
-  });
-  document.addEventListener("click", (event) => {
-    if (i >= message.length) {
-      terminal?.classList.add("fade-out");
-    }
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      output?.classList.add("hidden");
-      lapin?.classList.remove("hidden");
-    }
-  });
 </script>

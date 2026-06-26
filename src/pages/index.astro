@@ -3,22 +3,29 @@ import Layout from "../layouts/Layout.astro";
 import Intro from "../components/Intro.astro";
 import { Icon } from "astro-icon/components";
 import ProjectCard from "../components/ProjectCard.astro";
+import { Image } from "astro:assets";
+import moi from "../images/moi2.jpg";
+import captureMarika from "../images/CaptureMarikaSite.webp";
+import captureConsult from "../images/CaptureConsultSite.webp";
+import lapin from "../images/lapin.jpg";
 ---
 
 <Layout>
-  <!-- <Intro /> -->
-  <section class="wrapper" id="home">
+  <Intro />
+  <section class="wrapper scroll-mt-24" id="home">
     <h1 class="text-7xl font-bold text-center">
       <span class="text-2xl font-normal inline-block my-15">Portofolio de</span>
       <br />
       <span id="title">Yannick Mehdi de Viguerie</span>
       <br />
     </h1>
-    <img
-      src="/moi2.jpg"
-      alt="Photo de profil de Yannick Mehdi de Viguerie"
+    <div id="title-trigger"></div>
+    <Image
+      src={moi}
+      alt="Yannick Mehdi de Viguerie"
       title="Moi mi-saison"
-      class="rounded-full w-40 h-40 mx-auto my-10"
+      loading="eager"
+      class="rounded-full w-40 h-40 mx-auto my-10 transition-all duration-300 hover:contrast-[2] hover:saturate-0"
       id="pixelated"
     />
     <h2 class="text-5xl font-bold text-center subtitle">
@@ -37,10 +44,10 @@ import ProjectCard from "../components/ProjectCard.astro";
       et bonne navigation.
     </p>
   </section>
-  <section id="parcours" class="wrapper py-24">
+  <section id="parcours" class="wrapper py-24 scroll-mt-24">
     <h2 class="text-4xl mb-12 text-center">Parcours</h2>
 
-    <div id="experiences" class="mb-16">
+    <div id="experiences" class="mb-16 scroll-mt-24">
       <h3 class="text-2xl mb-6">Expériences</h3>
 
       <div class="space-y-10">
@@ -96,7 +103,7 @@ import ProjectCard from "../components/ProjectCard.astro";
           </p>
           <details class="mt-4">
             <summary
-              class="px-4 py-3 w-fit cursor-pointer bg-[#252526] border border-zinc-700 rounded hover:bg-[#2a2a2a] transition"
+              class="px-4 py-3 w-fit cursor-pointer hover:bg-orange-700 border border-zinc-700 rounded transition"
             >
               Missions réalisées
             </summary>
@@ -139,7 +146,7 @@ import ProjectCard from "../components/ProjectCard.astro";
           </p>
           <details class="mt-4">
             <summary
-              class="px-4 py-3 w-fit cursor-pointer bg-[#252526] border border-zinc-700 rounded hover:bg-[#2a2a2a] transition"
+              class="px-4 py-3 w-fit cursor-pointer hover:bg-orange-700 border border-zinc-700 rounded transition"
             >
               Missions réalisées
             </summary>
@@ -179,7 +186,7 @@ import ProjectCard from "../components/ProjectCard.astro";
           </p>
           <details class="mt-4">
             <summary
-              class="px-4 py-3 w-fit cursor-pointer bg-[#252526] border border-zinc-700 rounded hover:bg-[#2a2a2a] transition"
+              class="px-4 py-3 w-fit cursor-pointer hover:bg-orange-700 border border-zinc-700 rounded transition"
             >
               Missions réalisées
             </summary>
@@ -194,7 +201,7 @@ import ProjectCard from "../components/ProjectCard.astro";
         </article>
       </div>
 
-      <div id="formation" class="mt-16">
+      <div id="formation" class="mt-16 scroll-mt-24">
         <h3 class="text-2xl mb-6">Formations & Diplômes</h3>
 
         <div class="space-y-8">
@@ -208,11 +215,22 @@ import ProjectCard from "../components/ProjectCard.astro";
             </p>
 
             <p>
-              Admission obtenue pour poursuivre mon parcours vers le
-              développement logiciel et approfondir mes compétences en
-              conception d'applications, architecture logicielle et gestion de
-              projets.
+              Admission obtenue afin de poursuivre mon parcours vers le
+              développement. Cette formation me permettra d'approfondir la
+              conception d'applications, l'architecture logicielle, le
+              développement d'API et la gestion de projets en environnement
+              professionnel.
             </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="bg-zinc-800 px-3 py-1 rounded">Angular</span>
+              <span class="bg-zinc-800 px-3 py-1 rounded">Vue.js</span>
+              <span class="bg-zinc-800 px-3 py-1 rounded">React</span>
+              <span class="bg-zinc-800 px-3 py-1 rounded">TypeScript</span>
+              <span class="bg-zinc-800 px-3 py-1 rounded">API REST</span>
+              <span class="bg-zinc-800 px-3 py-1 rounded">Python</span>
+              <span class="bg-zinc-800 px-3 py-1 rounded">Docker</span>
+              <span class="bg-zinc-800 px-3 py-1 rounded">CI/CD</span>
+            </div>
           </article>
 
           <article>
@@ -234,8 +252,10 @@ import ProjectCard from "../components/ProjectCard.astro";
               <span class="bg-zinc-800 px-3 py-1 rounded">HTML</span>
               <span class="bg-zinc-800 px-3 py-1 rounded">CSS</span>
               <span class="bg-zinc-800 px-3 py-1 rounded">JavaScript</span>
+              <span class="bg-zinc-800 px-3 py-1 rounded">Bootstrap</span>
               <span class="bg-zinc-800 px-3 py-1 rounded">PHP</span>
               <span class="bg-zinc-800 px-3 py-1 rounded">MySQL</span>
+              <span class="bg-zinc-800 px-3 py-1 rounded">Figma</span>
               <span class="bg-zinc-800 px-3 py-1 rounded">UX/UI</span>
               <span class="bg-zinc-800 px-3 py-1 rounded">Git</span>
               <span class="bg-zinc-800 px-3 py-1 rounded">Méthode Agile</span>
@@ -283,11 +303,11 @@ import ProjectCard from "../components/ProjectCard.astro";
             </ul>
           </div>
         </div>
-        <div class="text-center">
+        <div class="text-center scroll-mt-24" id="cv">
           <a
             href="/CV_DevYannickdeViguerie.pdf"
             download
-            class="inline-block mt-8 px-4 py-2 border border-zinc-600 rounded hover:bg-zinc-800 transition text-xl"
+            class="inline-block mt-8 px-4 py-2 border border-zinc-600 rounded hover:bg-orange-700 transition text-xl"
             title="Ne clique pas! Sauf si tu veux télécharger mon CV evidemment"
           >
             Télécharger mon Curriculum Vitae
@@ -295,159 +315,256 @@ import ProjectCard from "../components/ProjectCard.astro";
         </div>
       </div>
     </div>
-    <section id="projet" class="wrapper">
-      <h2 class="text-4xl mb-12 text-center">Projets</h2>
+  </section>
+  <section id="projets" class="wrapper scroll-mt-24">
+    <h2 class="text-4xl mb-12 text-center">Projets</h2>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <ProjectCard
-          title="Marika Perros"
-          image="/CaptureMarikaSite.webp"
-          url="https://marikaperros.com"
-          technologies={[
-            { name: "Laravel", icon: "logos:laravel" },
-            { name: "Vue.js", icon: "logos:vue" },
-            { name: "Tailwind", icon: "logos:tailwindcss-icon" },
-            { name: "MySQL", icon: "logos:mysql" },
-            { name: "Git", icon: "logos:git-icon" },
-          ]}
-          description="Site d'artiste avec administration back-office, gestion de contenu et optimisation SEO."
-        />
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <ProjectCard
+        title="Marika Perros"
+        image={captureMarika}
+        url="https://marikaperros.com"
+        technologies={[
+          { name: "Laravel", icon: "logos:laravel" },
+          { name: "Vue.js", icon: "logos:vue" },
+          { name: "Tailwind", icon: "logos:tailwindcss-icon" },
+          { name: "MySQL", icon: "logos:mysql" },
+          { name: "Git", icon: "logos:git-icon" },
+        ]}
+        description="Site d'artiste avec administration back-office, gestion de contenu et optimisation SEO."
+      />
 
-        <ProjectCard
-          title="Consultations Philosophiques"
-          image="/CaptureConsultSite.webp"
-          url="https://consultationsphilosophiques.fr"
-          technologies={[
-            { name: "Astro", icon: "logos:astro" },
-            { name: "Tailwind CSS", icon: "logos:tailwindcss-icon" },
-            { name: "JavaScript", icon: "logos:javascript" },
-            { name: "Git", icon: "logos:git-icon" },
-          ]}
-          description="Site vitrine responsive conçu pour présenter une activité de consultation philosophique thérapeutique."
-        />
+      <ProjectCard
+        title="Consultations Philosophiques"
+        image={captureConsult}
+        url="https://consultationsphilosophiques.fr"
+        technologies={[
+          { name: "Astro", icon: "logos:astro" },
+          { name: "Tailwind", icon: "logos:tailwindcss-icon" },
+          { name: "JavaScript", icon: "logos:javascript" },
+          { name: "Git", icon: "logos:git-icon" },
+        ]}
+        description="Site vitrine responsive conçu pour présenter une activité de consultation philosophique thérapeutique."
+      />
+    </div>
+  </section>
+  <section id="contact" class="wrapper pt-20 pb-10 scroll-mt-16">
+    <h2 class="text-4xl mb-12 text-center">Contact</h2>
+
+    <div
+      class="max-w-3xl mx-auto border border-zinc-700 rounded-xl p-8 bg-zinc-900/50"
+    >
+      <p class="text-lg text-zinc-300 mb-8 text-center">
+        Une question, un projet, une opportunité professionnelle ou simplement
+        l'envie d'échanger autour du développement web ?
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <a
+          href="mailto:Yannickdeviguerie@gmail.com"
+          class="border border-zinc-700 rounded-lg p-4 hover:border-orange-700 transition"
+        >
+          <h3 class="font-semibold mb-2 flex items-center gap-2">
+            Email <Icon name="lucide:mail" />
+          </h3>
+          <p class="text-zinc-400">Yannickdeviguerie@gmail.com</p>
+        </a>
+
+        <a
+          href="tel:+33762617190"
+          class="border border-zinc-700 rounded-lg p-4 hover:border-orange-700 transition"
+        >
+          <h3 class="font-semibold mb-2 flex items-center gap-2">
+            Téléphone <Icon name="lucide:phone" />
+          </h3>
+          <p class="text-zinc-400">07 62 61 71 90</p>
+        </a>
+
+        <a
+          href="https://github.com/JackieChoun"
+          target="_blank"
+          class="border border-zinc-700 rounded-lg p-4 hover:border-orange-700 transition"
+        >
+          <h3 class="font-semibold mb-2 flex items-center gap-2">
+            GitHub <Icon name="lucide:github" />
+          </h3>
+          <p class="text-zinc-400">Voir mes projets</p>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/yannick-de-viguerie/"
+          target="_blank"
+          class="border border-zinc-700 rounded-lg p-4 hover:border-orange-700 transition"
+        >
+          <h3 class="font-semibold mb-2 flex items-center gap-2">
+            LinkedIn <Icon name="lucide:linkedin" />
+          </h3>
+          <p class="text-zinc-400">Mon profil professionnel</p>
+        </a>
       </div>
-    </section>
-    <section id="contact" class="wrapper py-24">
-      <h2 class="text-4xl mb-12 text-center">Contact</h2>
 
-      <div
-        class="max-w-3xl mx-auto border border-zinc-700 rounded-xl p-8 bg-zinc-900/50"
+      <div class="mt-10 text-center text-zinc-400">
+        Basé à Toulouse • Disponible pour un poste de développeur web ou des
+        projets freelance.
+      </div>
+    </div>
+  </section>
+  <div
+    id="lapin"
+    class="hidden fixed inset-0 z-50 bg-zinc-950 text-green-400 font-mono p-6 lg:p-10"
+  >
+    <pre id="lapin-output"></pre>
+
+    <div id="lapin-content" class="hidden mt-8 text-center">
+      <a
+        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&autoplay=1"
+        target="_blank"
+        class="inline-block"
+        rel="noopener noreferrer"
       >
-        <p class="text-lg text-zinc-300 mb-8 text-center">
-          Une question, un projet, une opportunité professionnelle ou simplement
-          l'envie d'échanger autour du développement web ?
-        </p>
+        <Image
+          src={lapin}
+          alt="Lapin blanc"
+          class="w-40 rounded-full animate-bounce mx-auto"
+        />
+      </a>
 
-        <div class="grid md:grid-cols-2 gap-6">
-          <a
-            href="mailto:Yannickdeviguerie@gmail.com"
-            class="border border-zinc-700 rounded-lg p-4 hover:border-blue-500 transition"
-          >
-            <h3 class="font-semibold mb-2 flex items-center gap-2">
-              Email <Icon name="lucide:mail" />
-            </h3>
-            <p class="text-zinc-400">Yannickdeviguerie@gmail.com</p>
-          </a>
+      <p class="mt-6 text-zinc-300">Le lapin blanc t'attend...</p>
 
-          <a
-            href="tel:+33762617190"
-            class="border border-zinc-700 rounded-lg p-4 hover:border-blue-500 transition"
-          >
-            <h3 class="font-semibold mb-2 flex items-center gap-2">
-              Téléphone <Icon name="lucide:phone" />
-            </h3>
-            <p class="text-zinc-400">07 62 61 71 90</p>
-          </a>
+      <p class="mt-2 text-zinc-500 text-sm">[Échap] Retour au portfolio</p>
+    </div>
 
-          <a
-            href="https://github.com/JackieChoun"
-            target="_blank"
-            class="border border-zinc-700 rounded-lg p-4 hover:border-blue-500 transition"
-          >
-            <h3 class="font-semibold mb-2 flex items-center gap-2">
-              GitHub <Icon name="lucide:github" />
-            </h3>
-            <p class="text-zinc-400">Voir mes projets</p>
-          </a>
+    <span id="lapin-cursor">█</span>
+  </div>
+  <style>
+    #pixelated {
+      clip-path: inset(0 0 100% 0);
+      animation: reveal 4s forwards;
+    }
 
-          <a
-            href="https://www.linkedin.com/in/yannick-de-viguerie/"
-            target="_blank"
-            class="border border-zinc-700 rounded-lg p-4 hover:border-blue-500 transition"
-          >
-            <h3 class="font-semibold mb-2 flex items-center gap-2">
-              LinkedIn <Icon name="lucide:linkedin" />
-            </h3>
-            <p class="text-zinc-400">Mon profil professionnel</p>
-          </a>
-        </div>
-
-        <div class="mt-10 text-center text-zinc-400">
-          Basé à Toulouse • Disponible pour un poste de développeur web ou des
-          projets freelance.
-        </div>
-      </div>
-    </section>
-    <style>
-      #pixelated {
-        clip-path: inset(0 0 100% 0);
-        animation: reveal 4s forwards;
+    @keyframes reveal {
+      to {
+        clip-path: inset(0 0 0 0);
       }
+    }
+  </style>
+  <script>
+    const title: HTMLElement | null = document.getElementById("title");
 
-      @keyframes reveal {
-        to {
-          clip-path: inset(0 0 0 0);
+    if (!title) {
+      throw new Error("Title element not found");
+    }
+
+    const text = title.textContent;
+
+    const fonts = [
+      "'Bitcount Single', monospace",
+      "'Black Ops One', cursive",
+      "'Dancing Script', cursive",
+      "'Quicksand', sans-serif",
+      "'Baskervville', serif",
+      "'Montserrat', sans-serif",
+      "'Playfair Display', serif",
+    ];
+
+    title.innerHTML = text
+      .split("")
+      .map((letter) =>
+        letter === " " ? " " : `<span class="letter">${letter}</span>`,
+      )
+      .join("");
+
+    const letters = document.querySelectorAll(".letter");
+
+    letters.forEach((letter, index) => {
+      let count = 0;
+
+      const interval = setInterval(
+        () => {
+          (letter as HTMLElement).style.fontFamily =
+            fonts[Math.floor(Math.random() * fonts.length)];
+
+          count++;
+
+          if (count > 10 + Math.random() * 10) {
+            clearInterval(interval);
+
+            (letter as HTMLElement).style.fontFamily =
+              "'Playfair Display', serif";
+          }
+        },
+        80 + Math.random() * 120,
+      );
+    });
+
+    // Easter egg
+    let typed = "";
+
+    document.addEventListener("keydown", (event) => {
+      if (event.ctrlKey || event.altKey || event.metaKey) return;
+
+      typed += event.key.toLowerCase();
+      typed = typed.slice(-3);
+
+      if (typed === "xyz") {
+        showLapin();
+      }
+    });
+
+    const lapinScreen = document.getElementById("lapin");
+    const lapinOutput = document.getElementById(
+      "lapin-output",
+    ) as HTMLPreElement;
+    const lapinContent = document.getElementById("lapin-content");
+    const lapinCursor = document.getElementById("lapin-cursor");
+    const easterEgg = `> xyz
+
+    Commande inconnue...
+    Recherche...
+    Signature détectée...
+    Authentification...
+    Accès développeur autorisé.
+
+    Chargement du lapin blanc... [ OK ]`;
+    function showLapin() {
+      lapinCursor?.classList.remove("hidden");
+      if (!lapinScreen || !lapinOutput) return;
+
+      if (!lapinScreen.classList.contains("hidden")) return;
+
+      lapinOutput.textContent = "";
+      lapinContent?.classList.add("hidden");
+
+      lapinScreen.classList.remove("hidden");
+      lapinScreen.classList.add("flex");
+
+      let i = 0;
+
+      function type() {
+        if (i < easterEgg.length) {
+          lapinOutput.textContent += easterEgg[i++];
+          setTimeout(type, 35);
+        } else {
+          setTimeout(() => {
+            lapinCursor?.classList.add("hidden");
+            lapinContent?.classList.remove("hidden");
+          }, 500);
         }
       }
-    </style>
-    <script>
-      const title: HTMLElement | null = document.getElementById("title");
 
-      if (!title) {
-        throw new Error("Title element not found");
-      }
+      type();
+    }
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
 
-      const text = title.textContent;
+      lapinScreen?.classList.remove("flex");
+      lapinScreen?.classList.add("hidden");
 
-      const fonts = [
-        "'Bitcount Single', monospace",
-        "'Black Ops One', cursive",
-        "'Dancing Script', cursive",
-        "'Quicksand', sans-serif",
-        "'Baskervville', serif",
-        "'Montserrat', sans-serif",
-        "'Playfair Display', serif",
-      ];
+      lapinOutput.textContent = "";
+      lapinContent?.classList.add("hidden");
+      lapinCursor?.classList.remove("hidden");
 
-      title.innerHTML = text
-        .split("")
-        .map((letter) =>
-          letter === " " ? " " : `<span class="letter">${letter}</span>`,
-        )
-        .join("");
-
-      const letters = document.querySelectorAll(".letter");
-
-      letters.forEach((letter, index) => {
-        let count = 0;
-
-        const interval = setInterval(
-          () => {
-            (letter as HTMLElement).style.fontFamily =
-              fonts[Math.floor(Math.random() * fonts.length)];
-
-            count++;
-
-            if (count > 10 + Math.random() * 10) {
-              clearInterval(interval);
-
-              (letter as HTMLElement).style.fontFamily =
-                "'Playfair Display', serif";
-            }
-          },
-          80 + Math.random() * 120,
-        );
-      });
-    </script>
-  </section>
+      typed = "";
+    });
+  </script>
 </Layout>

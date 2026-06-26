@@ -6,17 +6,47 @@ import NavBar from "../components/NavBar.astro";
   class="wrapper sticky top-0 z-50 flex items-center justify-between py-4 bg-[#1e1e1e]"
 >
   <NavBar />
-  <h1 class="text-3xl">XYZ.dev</h1>
-  <div class="space-x-4 flex items-center">
+
+  <h1
+    id="header-title"
+    class="hidden md:block text-2xl lg:text-3xl opacity-0 -translate-y-2 transition-all duration-300 truncate"
+  >
+    Yannick Mehdi de Viguerie
+  </h1>
+
+  <div class="flex items-center gap-4">
     <a
-      href="home"
-      class="text-sm text-zinc-400 hover:text-white transition-colors duration-200"
-      >Home</a
+      href="/#home"
+      class="text-sm text-zinc-400 hover:text-white transition-colors"
     >
+      Home
+    </a>
+
     <a
-      href="Contact"
-      class="text-sm text-zinc-400 hover:text-white transition-colors duration-200"
-      >Contact</a
+      href="/#contact"
+      class="text-sm text-zinc-400 hover:text-white transition-colors"
     >
+      Contact
+    </a>
   </div>
 </header>
+<script>
+  const trigger = document.getElementById("title-trigger");
+  const headerTitle = document.getElementById("header-title");
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      headerTitle?.classList.toggle("opacity-100", !entry.isIntersecting);
+      headerTitle?.classList.toggle("translate-y-0", !entry.isIntersecting);
+
+      headerTitle?.classList.toggle("opacity-0", entry.isIntersecting);
+      headerTitle?.classList.toggle("-translate-y-2", entry.isIntersecting);
+    },
+    {
+      threshold: 0,
+      rootMargin: "-80px 0px 0px 0px",
+    },
+  );
+
+  if (trigger) observer.observe(trigger);
+</script>

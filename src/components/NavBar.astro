@@ -4,7 +4,12 @@ import { Icon } from "astro-icon/components";
 
 <nav
   id="sidebar"
-  class="fixed left-0 top-0 z-50 h-screen w-72 bg-[#252526] border-r border-zinc-700 p-4 transition-transform duration-300 hidden"
+  class="fixed left-0 top-0 z-50 h-screen w-72
+         -translate-x-full
+         bg-[#252526]
+         border-r border-zinc-700
+         p-4
+         transition-transform duration-300 ease-in-out"
 >
   <div
     class="flex items-center justify-between mb-4 border-b border-zinc-700 pb-2"
@@ -23,48 +28,36 @@ import { Icon } from "astro-icon/components";
     <ul class="space-y-1">
       <li>portfolio/</li>
 
-      <li class="pl-4">
-        ├── <a href="/" class="hover:text-blue-400">home</a>
+      <li class="pl-4 hover:bg-zinc-600">
+        ├── <a href="/#home">home</a>
       </li>
 
       <li class="pl-4">├── parcours/</li>
 
-      <li class="pl-8">
-        │ ├── <a href="/parcours#experiences" class="hover:text-blue-400"
-          >experiences.md</a
-        >
+      <li class="pl-8 hover:bg-zinc-600">
+        │ ├── <a href="/#experiences">experiences.md</a>
       </li>
 
-      <li class="pl-8">
-        │ ├── <a href="/parcours#formation" class="hover:text-blue-400"
-          >formation.md</a
-        >
+      <li class="pl-8 hover:bg-zinc-600">
+        │ ├── <a href="/#formation">formation.md</a>
       </li>
 
-      <li class="pl-8">
-        │ └── <a href="/cv.pdf" class="hover:text-blue-400">cv.pdf</a>
+      <li class="pl-8 hover:bg-zinc-600">
+        │ └── <a href="/#cv">cv.pdf</a>
       </li>
 
       <li class="pl-4">├── projets/</li>
 
-      <li class="pl-8">
-        │ ├── <a href="/projets/philosophiques" class="hover:text-blue-400"
-          >Consultationsphilo</a
-        >
+      <li class="pl-8 hover:bg-zinc-600">
+        │ ├── <a href="/#projets">Consultationsphilo</a>
       </li>
 
-      <li class="pl-8">
-        │ └── <a href="/projets/marika" class="hover:text-blue-400"
-          >MarikaPerros</a
-        >
+      <li class="pl-8 hover:bg-zinc-600">
+        │ └── <a href="/#projets">MarikaPerros</a>
       </li>
 
-      <li class="pl-4">
-        ├── <a href="/xyz-dev" class="hover:text-blue-400">xyz.dev</a>
-      </li>
-
-      <li class="pl-4">
-        └── <a href="/contact" class="hover:text-blue-400">contact.ts</a>
+      <li class="pl-4 hover:bg-zinc-600">
+        └── <a href="/#contact">contact.ts</a>
       </li>
     </ul>
   </div>
@@ -84,10 +77,9 @@ import { Icon } from "astro-icon/components";
 
   closeBtn?.addEventListener("click", () => {
     sidebar?.classList.add("-translate-x-full");
-    openBtn?.classList.remove("hidden");
   });
 
   openBtn?.addEventListener("click", () => {
-    sidebar?.classList.remove("-translate-x-full", "hidden");
+    sidebar?.classList.remove("-translate-x-full");
   });
 </script>
