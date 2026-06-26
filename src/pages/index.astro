@@ -50,7 +50,7 @@ import lapin from "../images/lapin.jpg";
   <section id="parcours" class="wrapper py-24 scroll-mt-24">
     <h2 class="text-4xl mb-12 text-center">Parcours</h2>
 
-    <div id="experiences" class="mb-16 scroll-mt-24">
+    <div id="experiences" class="scroll-mt-24">
       <h3 class="text-2xl mb-6">Expériences</h3>
 
       <div class="space-y-10">
@@ -445,6 +445,7 @@ import lapin from "../images/lapin.jpg";
     #pixelated {
       clip-path: inset(0 0 100% 0);
       animation: reveal 4s forwards;
+      animation-play-state: paused; /* ← attend introFinished */
     }
 
     @keyframes reveal {
@@ -479,41 +480,47 @@ import lapin from "../images/lapin.jpg";
       )
       .join("");
 
-    const letters = document.querySelectorAll(".letter");
+    function startAnimations() {
+      const pixelated = document.getElementById("pixelated");
+      if (pixelated) {
+        pixelated.style.animationPlayState = "running";
+      }
 
-    letters.forEach((letter, index) => {
-      let count = 0;
-
-      const interval = setInterval(
-        () => {
-          (letter as HTMLElement).style.fontFamily =
-            fonts[Math.floor(Math.random() * fonts.length)];
-
-          count++;
-
-          if (count > 10 + Math.random() * 10) {
-            clearInterval(interval);
-
+      const letters = document.querySelectorAll(".letter");
+      letters.forEach((letter) => {
+        let count = 0;
+        const interval = setInterval(
+          () => {
             (letter as HTMLElement).style.fontFamily =
-              "'Playfair Display', serif";
-          }
-        },
-        80 + Math.random() * 120,
-      );
-    });
+              fonts[Math.floor(Math.random() * fonts.length)];
+            count++;
+            if (count > 10 + Math.random() * 10) {
+              clearInterval(interval);
+              (letter as HTMLElement).style.fontFamily =
+                "'Playfair Display', serif";
+            }
+          },
+          80 + Math.random() * 120,
+        );
+      });
+    }
+
+    // Si introFinished a déjà été dispatché avant ce script, on démarre direct.
+    // Sinon on attend l'événement.
+    if ((window as any).__introFinished) {
+      startAnimations();
+    } else {
+      window.addEventListener("introFinished", startAnimations, { once: true });
+    }
 
     // Easter egg
     let typed = "";
 
     document.addEventListener("keydown", (event) => {
       if (event.ctrlKey || event.altKey || event.metaKey) return;
-
       typed += event.key.toLowerCase();
       typed = typed.slice(-3);
-
-      if (typed === "xyz") {
-        showLapin();
-      }
+      if (typed === "xyz") showLapin();
     });
 
     const lapinScreen = document.getElementById("lapin");
@@ -522,6 +529,7 @@ import lapin from "../images/lapin.jpg";
     ) as HTMLPreElement;
     const lapinContent = document.getElementById("lapin-content");
     const lapinCursor = document.getElementById("lapin-cursor");
+
     const easterEgg = `> xyz
 
     Commande inconnue...
@@ -531,20 +539,18 @@ import lapin from "../images/lapin.jpg";
     Accès développeur autorisé.
 
     Chargement du lapin blanc... [ OK ]`;
+
     function showLapin() {
       lapinCursor?.classList.remove("hidden");
       if (!lapinScreen || !lapinOutput) return;
-
       if (!lapinScreen.classList.contains("hidden")) return;
 
       lapinOutput.textContent = "";
       lapinContent?.classList.add("hidden");
-
       lapinScreen.classList.remove("hidden");
       lapinScreen.classList.add("flex");
 
       let i = 0;
-
       function type() {
         if (i < easterEgg.length) {
           lapinOutput.textContent += easterEgg[i++];
@@ -556,19 +562,16 @@ import lapin from "../images/lapin.jpg";
           }, 500);
         }
       }
-
       type();
     }
+
     document.addEventListener("keydown", (event) => {
       if (event.key !== "Escape") return;
-
       lapinScreen?.classList.remove("flex");
       lapinScreen?.classList.add("hidden");
-
       lapinOutput.textContent = "";
       lapinContent?.classList.add("hidden");
       lapinCursor?.classList.remove("hidden");
-
       typed = "";
     });
   </script>

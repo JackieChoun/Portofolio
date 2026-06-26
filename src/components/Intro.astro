@@ -48,6 +48,8 @@
 
   if (seen && Date.now() - Number(seen) < INTRO_DURATION) {
     terminal?.remove();
+    // Juste avant le dispatchEvent dans les deux endroits où tu l'appelles
+    (window as any).__introFinished = true;
     window.dispatchEvent(new Event("introFinished"));
   } else {
     terminal?.classList.remove("hidden");
@@ -63,6 +65,8 @@
         localStorage.setItem("introSeen", Date.now().toString());
 
         terminal?.remove();
+        // Juste avant le dispatchEvent dans les deux endroits où tu l'appelles
+        (window as any).__introFinished = true;
         window.dispatchEvent(new Event("introFinished"));
       },
       { once: true },
