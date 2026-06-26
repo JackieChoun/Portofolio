@@ -13,8 +13,11 @@ import lapin from "../images/lapin.jpg";
 <Layout>
   <Intro />
   <section class="wrapper scroll-mt-24" id="home">
-    <h1 class="text-7xl font-bold text-center">
-      <span class="text-2xl font-normal inline-block my-15">Portofolio de</span>
+    <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold text-center">
+      <span
+        class="text-base sm:text-xl lg:text-2xl font-normal inline-block my-8 sm:my-12 lg:my-15"
+        >Portofolio de</span
+      >
       <br />
       <span id="title">Yannick Mehdi de Viguerie</span>
       <br />
@@ -28,10 +31,10 @@ import lapin from "../images/lapin.jpg";
       class="rounded-full w-40 h-40 mx-auto my-10 transition-all duration-300 hover:contrast-[2] hover:saturate-0"
       id="pixelated"
     />
-    <h2 class="text-5xl font-bold text-center subtitle">
+    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-center subtitle">
       Développeur fullstack
     </h2>
-    <p class="text-sm text-center mt-5 mx-50">
+    <p class="text-sm text-center mt-5 mx-4 sm:mx-16 lg:mx-50">
       Bienvenue sur mon portfolio ! Pour me présenter: je suis calme, patient et
       sociable, j'apprécie apprendre et particulièrement analyser un problème,
       chercher des solutions et construire quelque chose de concret. Après une
@@ -352,14 +355,14 @@ import lapin from "../images/lapin.jpg";
     <h2 class="text-4xl mb-12 text-center">Contact</h2>
 
     <div
-      class="max-w-3xl mx-auto border border-zinc-700 rounded-xl p-8 bg-zinc-900/50"
+      class="max-w-3xl mx-auto border border-zinc-700 rounded-xl p-4 sm:p-8 bg-zinc-900/50"
     >
       <p class="text-lg text-zinc-300 mb-8 text-center">
         Une question, un projet, une opportunité professionnelle ou simplement
         l'envie d'échanger autour du développement web ?
       </p>
 
-      <div class="grid md:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         <a
           href="mailto:Yannickdeviguerie@gmail.com"
           class="border border-zinc-700 rounded-lg p-4 hover:border-orange-700 transition"
@@ -367,7 +370,9 @@ import lapin from "../images/lapin.jpg";
           <h3 class="font-semibold mb-2 flex items-center gap-2">
             Email <Icon name="lucide:mail" />
           </h3>
-          <p class="text-zinc-400">Yannickdeviguerie@gmail.com</p>
+          <p class="text-zinc-400 text-sm sm:text-base break-all">
+            Yannickdeviguerie@gmail.com
+          </p>
         </a>
 
         <a
@@ -411,9 +416,9 @@ import lapin from "../images/lapin.jpg";
   </section>
   <div
     id="lapin"
-    class="hidden fixed inset-0 z-50 bg-zinc-950 text-green-400 font-mono p-6 lg:p-10"
+    class="hidden fixed inset-0 z-50 bg-zinc-950 text-green-400 font-mono p-6 lg:p-10 overflow-auto"
   >
-    <pre id="lapin-output"></pre>
+    <pre id="lapin-output" class="whitespace-pre-wrap wrap-break-words"></pre>
 
     <div id="lapin-content" class="hidden mt-8 text-center">
       <a
